@@ -21,8 +21,8 @@ public class CardDAO implements Dao<Card> {
     }
 
     @Override
-    public Optional<Card> get(String name) {
-        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE name = " + name + ";";
+    public Optional<Card> get(String key) {
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE name = \"" + key + "\";";
         try {
             Statement statement = conn.createStatement();
             statement.execute(sql);
@@ -39,7 +39,7 @@ public class CardDAO implements Dao<Card> {
                     effectsQueue.add(effect);
                 }
 
-                Card card = new Card(name, cost, element, effectsQueue);
+                Card card = new Card(key, cost, element, effectsQueue);
 
                 return Optional.of(card);
             }
@@ -90,43 +90,44 @@ public class CardDAO implements Dao<Card> {
             effects += effect + "$";
         }
 
-        String sql = "INSERT INTO " + TABLE_NAME +
-                " (name, cost, element, effects) VALUES ("
-                + t.getName() + ", " + t.getCost() + ", " + t.getElement() + ", " + effects + ");";
+        String sql = "INSERT INTO " + TABLE_NAME + " (name, cost, element, effects) VALUES (";
+        sql += "\"" + t.getName() + "\"," + t.getCost() + ", " + "\"" +t.getElement() +"\", " + "\"" + effects + "\");";
         
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.execute();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(sql);
+            e.printStackTrace();
         }
     }
 
     @Override
-    public void update(Card t, String[] params) {
+    public void update(String key, Card t) {
         String effects = "";
         for (String effect : t.getEffects()) {
             effects += effect + "$";
         }
 
         String sql = "UPDATE " + TABLE_NAME + " SET " +
-                "name = " + t.getName() + ", " +
+                "name = \"" + t.getName() + "\", " +
                 "cost = " + t.getCost() + ", " +
-                "element = " + t.getElement() + ", " +
-                "effects = " + effects + " " +
-                "WHERE name = " + t.getName() + ";";
+                "element = \"" + t.getElement() + "\", " +
+                "effects = \"" + effects + "\" " +
+                "WHERE name = \"" + t.getName() + "\";";
         
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.execute();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            System.out.println(sql);
         }
     }
 
     @Override
-    public void delete(Card t) {
-        String sql = "DELETE FROM " + TABLE_NAME + " WHERE name = " + t.getName() + ";";
+    public void delete(String key) {
+        String sql = "DELETE FROM " + TABLE_NAME + " WHERE name = \"" + key + "\";";
         
         try {
             PreparedStatement statement = conn.prepareStatement(sql);
