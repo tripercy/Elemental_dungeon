@@ -1,9 +1,6 @@
 package cardgame.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -11,23 +8,21 @@ import java.util.Queue;
 
 import cardgame.model.Card;
 import cardgame.model.Element;
+import cardgame.utils.DBUtils;
 
 public class CardDAO implements Dao<Card> {
     private static final String TABLE_NAME = "cards";
-    private final Connection conn;
+    private DBUtils dbUtils;
 
-    public CardDAO(Connection conn) {
-        this.conn = conn;
+    public CardDAO(DBUtils dbUtils) {
+        this.dbUtils = dbUtils;
     }
 
     @Override
     public Optional<Card> get(String key) {
         String sql = "SELECT * FROM " + TABLE_NAME + " WHERE name = \"" + key + "\";";
+        ResultSet resultSet = dbUtils.selectQuery(sql);
         try {
-            Statement statement = conn.createStatement();
-            statement.execute(sql);
-
-            ResultSet resultSet = statement.getResultSet();
             if (resultSet.next()) {
                 int cost = resultSet.getInt("cost");
                 Element element = Element.valueOf(resultSet.getString("element"));
@@ -57,10 +52,7 @@ public class CardDAO implements Dao<Card> {
         List<Card> cards = new LinkedList<Card>();
 
         try {
-            Statement statement = conn.createStatement();
-            statement.execute(sql);
-
-            ResultSet resultSet = statement.getResultSet();
+            ResultSet resultSet = dbUtils.selectQuery(sql);
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
                 int cost = resultSet.getInt("cost");
@@ -90,16 +82,14 @@ public class CardDAO implements Dao<Card> {
             effects += effect + "$";
         }
 
-        String sql = "INSERT INTO " + TABLE_NAME + " (name, cost, element, effects) VALUES (";
-        sql += "\"" + t.getName() + "\"," + t.getCost() + ", " + "\"" +t.getElement() +"\", " + "\"" + effects + "\");";
-        
-        try {
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.execute();
-        } catch (Exception e) {
-            System.out.println(sql);
-            e.printStackTrace();
-        }
+        String sql = "INSERT INTO " + TABLE_NAME +
+                " (name, cost, element, effects) VALUES ("
+                + "\"" + t.getName()
+                + "\"," + t.getCost() + ", " + "\""
+                + t.getElement() + "\", "
+                + "\"" + effects + "\");";
+
+        dbUtils.updateQuery(sql);
     }
 
     @Override
@@ -115,26 +105,15 @@ public class CardDAO implements Dao<Card> {
                 "element = \"" + t.getElement() + "\", " +
                 "effects = \"" + effects + "\" " +
                 "WHERE name = \"" + t.getName() + "\";";
-        
-        try {
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(sql);
-        }
+
+        dbUtils.updateQuery(sql);
     }
 
     @Override
     public void delete(String key) {
         String sql = "DELETE FROM " + TABLE_NAME + " WHERE name = \"" + key + "\";";
-        
-        try {
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.execute();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+
+        dbUtils.updateQuery(sql);
     }
 
 }
