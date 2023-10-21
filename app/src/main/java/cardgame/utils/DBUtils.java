@@ -10,7 +10,6 @@ public class DBUtils {
     private static Connection conn;
 
     private DBUtils() {
-        instance = new DBUtils();
         try {
             conn = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {

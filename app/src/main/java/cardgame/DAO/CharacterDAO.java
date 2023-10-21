@@ -12,7 +12,7 @@ import cardgame.utils.DBUtils;
 
 public class CharacterDAO implements Dao<Character> {
     private static final String TABLE_NAME = "characters";
-    private final DBUtils dbUtils;
+    private DBUtils dbUtils;
 
     public CharacterDAO() {
         dbUtils = DBUtils.getInstance();
