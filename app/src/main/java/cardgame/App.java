@@ -2,7 +2,6 @@ package cardgame;
 
 import java.sql.*;
 import java.util.LinkedList;
-import java.util.Queue;
 
 import cardgame.DAO.CardDAO;
 import cardgame.Model.Card;
