@@ -19,3 +19,17 @@ CREATE TABLE characters(
     mana INT NOT NULL,
     PRIMARY KEY (name)
 );
+
+CREATE TABLE player_cards(
+    name VARCHAR(255) NOT NULL,
+    quantity INT NOT NULL,
+    PRIMARY KEY (name),
+    FOREIGN KEY (name) REFERENCES cards(name)
+);
+
+CREATE TABLE player_characters(
+    name VARCHAR(255) NOT NULL,
+    quantity INT NOT NULL,
+    PRIMARY KEY (name),
+    FOREIGN KEY (name) REFERENCES characters(name)
+);
