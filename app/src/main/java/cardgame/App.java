@@ -16,7 +16,7 @@ public class App {
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
 
-            CardDAO cardDAO = new CardDAO(conn);
+            CardDAO cardDAO = new CardDAO();
 
             cardDAO.update("Slash", new Card("Slash", 1, Element.FIRE, new LinkedList<String>()));
         } catch (SQLException e) {

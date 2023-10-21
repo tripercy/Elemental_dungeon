@@ -14,8 +14,8 @@ public class CardDAO implements Dao<Card> {
     private static final String TABLE_NAME = "cards";
     private DBUtils dbUtils;
 
-    public CardDAO(DBUtils dbUtils) {
-        this.dbUtils = dbUtils;
+    public CardDAO() {
+        this.dbUtils = DBUtils.getInstance();
     }
 
     @Override
