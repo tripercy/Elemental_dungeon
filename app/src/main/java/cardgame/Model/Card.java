@@ -1,4 +1,4 @@
-package cardgame.Model;
+package cardgame.model;
 
 import java.util.Queue;
 

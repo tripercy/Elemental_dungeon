@@ -1,4 +1,4 @@
-package cardgame.Model;
+package cardgame.model;
 
 public interface HasElement {
     public Element getElement();

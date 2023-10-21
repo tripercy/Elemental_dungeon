@@ -1,4 +1,4 @@
-package cardgame.DAO;
+package cardgame.dao;
 
 import java.util.List;
 import java.util.Optional;

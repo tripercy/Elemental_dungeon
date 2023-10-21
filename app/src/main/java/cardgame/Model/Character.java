@@ -1,4 +1,4 @@
-package cardgame.Model;
+package cardgame.model;
 
 public class Character implements HasElement {
     private String name;

@@ -1,7 +1,4 @@
-package cardgame.DAO;
-
-import cardgame.Model.Card;
-import cardgame.Model.Element;
+package cardgame.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
+
+import cardgame.model.Card;
+import cardgame.model.Element;
 
 public class CardDAO implements Dao<Card> {
     private static final String TABLE_NAME = "cards";

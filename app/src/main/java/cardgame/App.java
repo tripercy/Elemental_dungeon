@@ -3,9 +3,9 @@ package cardgame;
 import java.sql.*;
 import java.util.LinkedList;
 
-import cardgame.DAO.CardDAO;
-import cardgame.Model.Card;
-import cardgame.Model.Element;
+import cardgame.dao.CardDAO;
+import cardgame.model.Card;
+import cardgame.model.Element;
 
 public class App {
     public static void main(String[] args) {
