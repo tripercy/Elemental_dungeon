@@ -95,6 +95,10 @@ public class Battle implements Subject {
         }
     }
 
+    public void discardCard(int index) {
+        this.playerHand.getCards().remove(index);
+    }
+
     public void attackEnemy(int index, int damage, Element element) {
         Enemy enemy = this.enemies.get(index);
 
