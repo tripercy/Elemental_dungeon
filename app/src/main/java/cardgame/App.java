@@ -13,6 +13,7 @@ public class App extends Application{
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        primaryStage.setResizable(false);
         SceneLoader sceneLoader = new SceneLoader();
 
         sceneLoader.loadScene("main-menu.fxml", primaryStage, 800, 600);

@@ -18,25 +18,25 @@
     <top>
         <HBox spacing="0" prefHeight="50">
             <children>
-                <Button text="Back" HBox.hgrow="ALWAYS" prefHeight="50" onAction="#back" />
-                <Button text="Cards" style="-fx-background-color: CDFAD5;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" onAction="#cardModifier" />
-                <Button text="Character" style="-fx-background-color: FFCF96;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" onAction="#characterModifier" />
-                <Button text="Enemies" style="-fx-background-color: FF8080;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" onAction="#enemyModifier" />
+                <Button text="Back" HBox.hgrow="ALWAYS" prefHeight="50" onAction="#back" styleClass="cust-button"/>
+                <Button text="Cards" style="-fx-background-color: CDFAD5;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" onAction="#cardModifier" styleClass="big_btn_font"/>
+                <Button text="Character" style="-fx-background-color: FFCF96;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" onAction="#characterModifier" styleClass="big_btn_font" />
+                <Button text="Enemies" style="-fx-background-color: FF8080;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" onAction="#enemyModifier" styleClass="big_btn_font" />
             </children>
         </HBox>
     </top>
 
     <left>
-        <ListView fx:id="itemList" prefWidth="200" />
+        <ListView fx:id="itemList" prefWidth="200" styleClass="cardlist"/>
     </left>
 
     <center>
         <VBox prefWidth="300">
             <AnchorPane prefWidth="300" style="-fx-background-color: lightgray;" fx:id="itemInfo" VBox.vgrow="ALWAYS"  />
             <HBox spacing="0" prefHeight="50">
-                <Button text="Add" style="-fx-background-color: CDFAD5;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" fx:id="addBtn" />
-                <Button text="Modify" style="-fx-background-color: FFCF96;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" fx:id="modBtn" />
-                <Button text="Delete" style="-fx-background-color: FF8080;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" fx:id="delBtn" />
+                <Button text="Add" style="-fx-background-color: CDFAD5;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" fx:id="addBtn" styleClass="btn_font"/>
+                <Button text="Modify" style="-fx-background-color: FFCF96;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" fx:id="modBtn" styleClass="btn_font"/>
+                <Button text="Delete" style="-fx-background-color: FF8080;" HBox.hgrow="ALWAYS" maxWidth="Infinity" prefHeight="50" fx:id="delBtn" styleClass="btn_font"/>
             </HBox>
         </VBox>
     </center>

@@ -26,5 +26,4 @@
         <Label text="Data manager" styleClass="clickabel, text_field" layoutY="580" layoutX="10" fx:id="managerLbl"/>
     </AnchorPane>
 
-
 </StackPane>

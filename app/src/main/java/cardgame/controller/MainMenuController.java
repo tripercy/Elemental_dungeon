@@ -22,7 +22,11 @@ public class MainMenuController implements Controller {
         currentStage = stage;
 
         playLbl.setOnMouseClicked(event -> {
-            System.out.println("Play");
+            try {
+                (new SceneLoader()).loadScene("char-select.fxml", currentStage, 800, 600);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         colLbl.setOnMouseClicked(event -> {

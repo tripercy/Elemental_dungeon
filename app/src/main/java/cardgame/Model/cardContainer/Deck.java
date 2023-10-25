@@ -47,7 +47,12 @@ public class Deck implements CardContainer {
 
     @Override
     public void removeCard(Card card) {
-        cards.removeIf(c -> c.equals(card));
+        for (Card c : cards) {
+            if (c.getName().equals(card.getName())) {
+                cards.remove(c);
+                break;
+            }
+        }
     }
 
     @Override
@@ -67,5 +72,9 @@ public class Deck implements CardContainer {
                 cards.set(i, cards.get(randomIndex));
                 cards.set(randomIndex, temp);
             }
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }
