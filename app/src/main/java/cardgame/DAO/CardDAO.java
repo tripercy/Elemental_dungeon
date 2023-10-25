@@ -30,8 +30,10 @@ public class CardDAO implements Dao<Card> {
                 Queue<String> effectsQueue = new LinkedList<String>();
 
                 // Split the effects string into a queue, delimited by $
-                for (String effect : effects.split("$")) {
-                    effectsQueue.add(effect);
+                for (String effect : effects.split("\\$")) {
+                    effect = effect.strip();
+                    if (effect.length() > 0)
+                        effectsQueue.add(effect);
                 }
 
                 Card card = new Card(key, cost, element, effectsQueue);
@@ -61,8 +63,10 @@ public class CardDAO implements Dao<Card> {
                 Queue<String> effectsQueue = new LinkedList<String>();
 
                 // Split the effects string into a queue, delimited by $
-                for (String effect : effects.split("$")) {
-                    effectsQueue.add(effect);
+                for (String effect : effects.split("\\$")) {
+                    effect = effect.strip();
+                    if (effect.length() > 0)
+                        effectsQueue.add(effect);
                 }
 
                 Card card = new Card(name, cost, element, effectsQueue);
@@ -79,7 +83,7 @@ public class CardDAO implements Dao<Card> {
     public void save(Card t) {
         String effects = "";
         for (String effect : t.getEffects()) {
-            effects += effect + "$";
+            effects += effect + " $ ";
         }
 
         String sql = "INSERT INTO " + TABLE_NAME +

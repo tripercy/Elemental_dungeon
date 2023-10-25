@@ -20,6 +20,13 @@ CREATE TABLE characters(
     PRIMARY KEY (name)
 );
 
+CREATE TABLE enemies(
+    name VARCHAR(255) NOT NULL,
+    element VARCHAR(255) NOT NULL,
+    health INT NOT NULL,
+    PRIMARY KEY (name)
+);
+
 CREATE TABLE player_cards(
     name VARCHAR(255) NOT NULL,
     quantity INT NOT NULL,
