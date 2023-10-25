@@ -3,6 +3,7 @@ package cardgame.model;
 public class Enemy implements HasElement{
     private String name;
     private int hp;
+    private int maxHp;
     private int attack;
 
     private Element element;
@@ -10,6 +11,7 @@ public class Enemy implements HasElement{
     public Enemy(String name, int hp, int attack, Element element) {
         this.name = name;
         this.hp = hp;
+        this.maxHp = hp;
         this.attack = attack;
         this.element = element;
     }
@@ -52,5 +54,13 @@ public class Enemy implements HasElement{
 
     public void setElement(Element element) {
         this.element = element;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
     }
 }
