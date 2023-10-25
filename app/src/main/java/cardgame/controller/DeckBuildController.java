@@ -82,6 +82,9 @@ public class DeckBuildController implements Controller {
     }
 
     public void add() {
+        if (currentDeck.getSize() == currentDeck.getCapacity()) {
+            return;
+        }
         String selectedCard = cards.getSelectionModel().getSelectedItem();
         if (selectedCard != null) {
             Optional<Card> oc = cardDAO.get(selectedCard);
@@ -133,11 +136,11 @@ public class DeckBuildController implements Controller {
         }
     }
 
-    private void startRun(){
+    private void startRun() {
         RunData.deck = currentDeck;
-
+        RunData.currentFloor = 1;
         try {
-            (new SceneLoader()).loadScene("run.fxml", currentStage, 800, 600);
+            (new SceneLoader()).loadScene("room-picking.fxml", currentStage, 800, 600);
         } catch (Exception e) {
             e.printStackTrace();
         }
