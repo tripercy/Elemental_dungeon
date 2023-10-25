@@ -15,9 +15,9 @@ public class App extends Application{
     public void start(Stage primaryStage) throws IOException {
         SceneLoader sceneLoader = new SceneLoader();
 
-        sceneLoader.loadScene("manager.fxml", primaryStage, 800, 600);
+        sceneLoader.loadScene("main-menu.fxml", primaryStage, 800, 600);
 
-        primaryStage.setTitle("Manager");
+        primaryStage.setTitle("Card Game");
         primaryStage.show();
     }
 }

@@ -6,10 +6,10 @@ import cardgame.dao.EnemyDAO;
 import cardgame.elements.CardModifiable;
 import cardgame.elements.CharacterModifiable;
 import cardgame.elements.EnemyModifiable;
-import cardgame.elements.EnemyView;
 import cardgame.model.Card;
 import cardgame.model.Character;
 import cardgame.model.Element;
+import cardgame.utils.SceneLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -61,7 +61,11 @@ public class ManagerController implements Controller {
     }
 
     public void back() {
-        System.out.println("Back pressed");
+        try {
+            (new SceneLoader()).loadScene("main-menu.fxml", currentStage, 800, 600);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void refreshCardList() {
@@ -89,7 +93,7 @@ public class ManagerController implements Controller {
 
         addBtn.setOnAction(event -> {
             Card card = cm.getCard();
-            if (card != null && !card.getName().equals("-") && card.getCost() >= 0){
+            if (card != null && !card.getName().equals("-") && card.getCost() >= 0) {
                 cardDAO.save(card);
                 refreshCardList();
             } else {
@@ -148,7 +152,7 @@ public class ManagerController implements Controller {
 
         addBtn.setOnAction(event -> {
             Character character = cm.getCharacter();
-            if (character != null && !character.getName().equals("-") && character.getMaxMana() >= 0){
+            if (character != null && !character.getName().equals("-") && character.getMaxMana() >= 0) {
                 characterDAO.save(character);
                 refreshCharacterList();
             } else {
@@ -182,7 +186,7 @@ public class ManagerController implements Controller {
         });
     }
 
-    private void refreshEnemyList(){
+    private void refreshEnemyList() {
         List<cardgame.model.Enemy> enemies = enemyDAO.getAll();
 
         items.clear();
@@ -207,7 +211,7 @@ public class ManagerController implements Controller {
 
         addBtn.setOnAction(event -> {
             cardgame.model.Enemy enemy = em.getEnemy();
-            if (enemy != null && !enemy.getName().equals("-") && enemy.getMaxHp() > 0){
+            if (enemy != null && !enemy.getName().equals("-") && enemy.getMaxHp() > 0) {
                 enemyDAO.save(enemy);
                 refreshEnemyList();
             } else {

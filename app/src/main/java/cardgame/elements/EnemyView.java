@@ -91,6 +91,9 @@ public class EnemyView extends VBox {
 
         this.setPrefSize(200, 300);
         bottomBox.setPrefHeight(80);
+
+        this.getStyleClass().add("card-labels");
+        this.getStyleClass().add("card");
     }
 
     public EnemyView(Enemy enemy){

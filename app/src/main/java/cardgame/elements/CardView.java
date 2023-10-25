@@ -64,7 +64,8 @@ public class CardView extends VBox{
         imageView = new ImageView(image);
         
         descriptionText = new Text("---");
-        descriptionText.setFont(Font.font(14));
+        descriptionText.getStyleClass().add("norm-text");
+        descriptionText.setLineSpacing(5);
         
         // Create the top HBox for the circle and label
         topBox = new HBox(10);
@@ -96,6 +97,10 @@ public class CardView extends VBox{
 
         this.setPrefSize(200, 300);
         bottomBox.setPrefHeight(80);
+
+        this.getStyleClass().add("card-labels");
+        bottomBox.getStyleClass().add("card-effect");
+        this.getStyleClass().add("card");
     }
 
     public CardView(Card card) {

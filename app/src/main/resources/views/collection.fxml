@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.Label?>
+
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" fx:id="root"
+    xmlns="http://javafx.com/javafx/20.0.1"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardgame.controller.CollectionController">
+
+    <top>
+        <HBox alignment="CENTER" spacing="10" prefHeight="50">
+            <Text text="Collection" styleClass="big_label" />
+        </HBox>
+    </top>
+
+    <left>
+        <VBox alignment="CENTER" prefWidth="280">
+            <Label text="Cards" styleClass="med_label" />
+
+            <ScrollPane>
+                <FlowPane fx:id="cards" hgap="10" vgap="10" prefWidth="280"/>
+            </ScrollPane>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox alignment="CENTER">
+            <Label text="Characters" styleClass="med_label" />
+
+            <ScrollPane>
+                <FlowPane fx:id="characters" hgap="10" vgap="10"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox alignment="CENTER" prefWidth="280">
+            <Label text="Enemies" styleClass="med_label" />
+
+            <ScrollPane>
+                <FlowPane fx:id="enemies" hgap="10" vgap="10" prefWidth="280"/>
+            </ScrollPane>
+        </VBox>
+    </right>
+
+    <bottom>
+        <HBox alignment="CENTER" spacing="10" prefHeight="50">
+            <Button text="Back" onAction="#back" styleClass="cust-button" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

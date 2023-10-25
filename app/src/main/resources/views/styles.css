@@ -1,0 +1,62 @@
+@font-face {
+    font-family: 'Antiquity Print';
+    src: url('../fonts/antiquity_print.ttf');
+}
+
+@font-face {
+    font-family: 'Dogica';
+    src: url('../fonts/dogica.ttf');
+}
+
+@font-face {
+    font-family: 'Dogica Pixel';
+    src: url('../fonts/dogicapixel.ttf');
+}
+
+.big_label {
+    -fx-font-family: 'Antiquity Print';
+    -fx-font-size: 30px;
+}
+
+.med_label {
+    -fx-font-family: 'Antiquity Print';
+    -fx-font-size: 20px;
+}
+
+.clickabel {
+    -fx-text-fill: black;
+}
+
+.clickabel:hover{
+    -fx-text-fill: white;
+}
+
+.text_field {
+    -fx-font-family: 'Dogica Pixel';
+    -fx-font-size: 14px;
+}
+
+.card-labels .label{
+    -fx-font-family: 'Dogica Pixel';
+    -fx-font-size: 14px;
+}
+
+.norm-text{
+    -fx-font-family: 'Dogica Pixel';
+    -fx-font-size: 13px;
+}
+
+.card{
+    -fx-background-color: #FFEDDA;
+}
+
+.cust-button{
+    -fx-font-family: 'Dogica Pixel';
+    -fx-font-size: 14px;
+    -fx-border-width: 0; /* Remove the border */
+    -fx-background-color: transparent;
+}
+
+.cust-button:hover{
+    -fx-background-color: #FFEDDA;
+}
