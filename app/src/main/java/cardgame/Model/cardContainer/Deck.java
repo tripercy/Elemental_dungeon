@@ -14,6 +14,10 @@ public class Deck implements CardContainer {
         this.cards = cards;
     }
 
+    public Deck(Deck deck) {
+        this.cards = new LinkedList<>(deck.cards);
+    }
+
     public Deck() {
         this.cards = new LinkedList<>();
     }

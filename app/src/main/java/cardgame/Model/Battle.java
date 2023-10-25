@@ -78,6 +78,28 @@ public class Battle implements Subject {
         }
     }
 
+    public boolean ended() {
+        if (this.playerCharacter.getHealth() <= 0) {
+            notifyObservers("You lost!");
+            return true;
+        }
+
+        boolean allEnemiesDead = true;
+        for (Enemy enemy : this.enemies) {
+            if (enemy.getHp() > 0) {
+                allEnemiesDead = false;
+                break;
+            }
+        }
+
+        if (allEnemiesDead) {
+            notifyObservers("You won!");
+            return true;
+        }
+
+        return false;
+    }
+
     public void shuffleHand() {
         int size = this.playerHand.getSize();
         // Move all cards from hand to deck
@@ -100,13 +122,13 @@ public class Battle implements Subject {
     }
 
     public void attackEnemy(int index, int damage, Element element) {
+        if (index < 0 || index >= this.enemies.size())
+            index = 0;
         Enemy enemy = this.enemies.get(index);
 
         int modifier = 0;
         if (enemy.isCountered(element)) {
             modifier = 1;
-        } else {
-            modifier = -1;
         }
 
         enemy.setHp(enemy.getHp() - damage - modifier);
@@ -117,8 +139,6 @@ public class Battle implements Subject {
 
         if (playerCharacter.isCountered(element))
             modifier = 1;
-        else
-            modifier = -1;
 
         this.playerCharacter.setHealth(this.playerCharacter.getHealth() - damage - modifier);
     }

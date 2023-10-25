@@ -187,4 +187,8 @@ public class EnemyView extends VBox {
 
         enemy.setAttack(attack);
     }
+
+    public void refresh() {
+        setEnemy(enemy);
+    }
 }

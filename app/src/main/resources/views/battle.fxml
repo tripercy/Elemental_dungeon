@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" fx:id="root"
+    xmlns="http://javafx.com/javafx/20.0.1"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardgame.controller.BattleController">
+
+    <HBox alignment="CENTER" spacing="10" layoutX="350" layoutY="10">
+        <Label text="Battle" styleClass="big_label" />
+    </HBox>
+
+    <HBox fx:id="enemyBox" alignment="CENTER" spacing="10" layoutX="90" layoutY="60" prefWidth="600" prefHeight="200" styleClass="outlined"/>
+    <HBox fx:id="playerBox" alignment="CENTER" spacing="10" layoutX="290" layoutY="320" prefWidth="200" prefHeight="300" styleClass="outlined"/>
+
+    <Button text="Hand" layoutX="500" layoutY="450" onAction="#showHand" styleClass="cust-button"/>
+    <Button text="End turn" layoutX="500" layoutY="500" onAction="#endTurn" styleClass="cust-button"/>
+
+</AnchorPane>

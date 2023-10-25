@@ -7,6 +7,7 @@ import java.util.Random;
 import cardgame.model.Element;
 
 import cardgame.model.RunData;
+import cardgame.utils.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -35,6 +36,36 @@ public class RoomPickController implements Controller {
         addElementsToRoom(room1, room1Elements);
         addElementsToRoom(room2, room2Elements);
         addElementsToRoom(room3, room3Elements);
+
+        room1.setOnMouseClicked(event -> {
+            try {
+                BattleController battleController = (BattleController) (new SceneLoader()).loadScene("battle.fxml",
+                        currentStage, 800, 600);
+                battleController.setEnemy(room1Elements);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        room2.setOnMouseClicked(event -> {
+            try {
+                BattleController battleController = (BattleController) (new SceneLoader()).loadScene("battle.fxml",
+                        currentStage, 800, 600);
+                battleController.setEnemy(room2Elements);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        room3.setOnMouseClicked(event -> {
+            try {
+                BattleController battleController = (BattleController) (new SceneLoader()).loadScene("battle.fxml",
+                        currentStage, 800, 600);
+                battleController.setEnemy(room3Elements);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private List<Element> generateElements() {

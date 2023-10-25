@@ -187,4 +187,8 @@ public class CharacterView extends VBox {
     protected void setMaxMana(int maxMana) {
         character.setMaxMana(maxMana);
     }
+
+    public void refresh() {
+        setCharacter(character);
+    }
 }

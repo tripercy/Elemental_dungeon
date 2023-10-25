@@ -190,4 +190,8 @@ public class CardView extends VBox{
         descriptionText.setText(String.join("\n", description));
         card.setEffects(description);
     }
+
+    public void refresh() {
+        setCard(card);
+    }
 }

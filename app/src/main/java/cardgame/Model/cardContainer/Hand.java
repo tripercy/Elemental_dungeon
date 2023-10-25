@@ -24,7 +24,7 @@ public class Hand implements CardContainer {
 
     @Override
     public void setCapacity(int capacity) {
-        
+
     }
 
     @Override
@@ -48,7 +48,12 @@ public class Hand implements CardContainer {
 
     @Override
     public void removeCard(Card card) {
-        cards.removeIf(c -> c.equals(card));
+        for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).getName().equals(card.getName())) {
+                cards.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
